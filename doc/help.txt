@@ -1,0 +1,67 @@
+-penvcube                 : make a ptex cube enviro map from 6 images
+-envcube                  : make a cube enviro map from 6 images
+  -fov <f>                : <f> = cube map field-of-view in degrees
+  -shbands <n>            : embed <n> spherical harmonic bands
+-envlatl                  : make a lat-long enviro map
+  -shbands <n>            : embed <n> spherical harmonic bands
+-shadow                   : make a shadow map from a z-image
+-minmaxshadow             : make a minmax shadow map
+-pyramidshadow            : make a pyramid shadow map
+-smode <m>                : s wrap mode, <m> = black|clamp|periodic
+-tmode <m>                : t wrap mode, <m> = black|clamp|periodic
+-mode  <m>                : sets wrap mode for s and t
+-ch <#,#:#>               : selects input channels <#>
+-pattern <p>              : selects filter resolutions
+                             <p> = single|diagonal|all
+-byte                     : output 8-bit data  (unsigned)
+-short                    : output 16-bit data (signed)
+-half                     : output half-float data (EXR/penv)
+-float                    : output float data
+-resize <r>               : resize power of 2 using given mode
+                             <r> = none|up[-]|down[-]|round[-]
+-filter <f>               : <f> = filtername used for resize
+-sblur <n>                : <n> = blur in s (>1.0 blurs)
+-tblur <n>                : <n> = blur in t (>1.0 blurs)
+-blur <n>                 : <n> = blur in s and t
+-bleedalpha               : radially bleed colors to fill alpha
+-mipfilter <f>            : <f> = filtername used for mipmap creation
+-mipfrom <s>              : <s> = previous | source | <n>
+                          : <n> = use image n levels up as source
+-compression <c>          : compress output texture with
+                             <c> = none|lossless|lossy
+                             <c> = none|rle|zip|piz|pxr24|b44|b44a (EXR)
+-diffconv <brdf,res,mip>  : compute diffuse convolution
+                             <brdf> = Lambert|KajiyaKay
+                             <res> = width at which to compute
+                             convolution (optional)
+                             <mip> = mip (optional)
+-extraargs <s>            : extra arguments for image processing
+  displaywindow           : use input displaywindow
+-format <f>               : texture format <f> = openexr|pixar|tiff
+-usermipmap               : user provides images for each mipmap level
+-newer                    : do nothing if source is older than texture
+-dirmap <s> -dirmapend    : apply dirmapping
+                            to input and output files
+                            multiple dirmaps can be specified
+                            syntax for <s> should look similar
+                            to RiOption "searchpath" "dirmap"
+                            Ex:
+                            [\"NFS\" \"z:/\" \"/mnt/\"]
+                            [\"NFS\" \"Z:/\" \"/mnt/\"]
+-t:X                      : use X threads
+-verbose                  : provide guidance as txmake executes
+-version                  : provide version and exit
+-help                     : print this usage message
+
+txmake supports the the following image types:
+  TIFF, OpenEXR, JPEG,
+  SGI, TGA, MayaIFF,
+  DPX, BMP, HDR,
+  PNG, GIF, PPM, XPM,
+  Pixar TEX and Z-files
+
+txmake supports the the following filter types:
+  point, box, triangle, sinc,
+  gaussian, gaussian-soft,
+  catmull-rom, mitchell, cubic,
+  lanczos, bessel, blackman-harris

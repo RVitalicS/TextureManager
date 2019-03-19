@@ -1,0 +1,325 @@
+/*_____________ List _____________*/
+
+QListWidget {
+	border: none;
+	background: #ffffff;
+	color: #3c3f41;
+	}
+
+QListWidget[ctrl='True'] {
+	border: none;
+	background: #ffffff;
+	color: #3c3f41;
+	background-image: url(":/ctrl.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-origin: content;
+	padding: 0px;
+	}
+
+QListWidget::item:disabled {
+	color: #aaaaaa;
+	}
+
+QListWidget::item:selected {
+	background: #0099ff;
+	color: #ffffff;
+	}
+
+QListWidget::item:focus {
+	background: #3c3f41;
+	color: #ffffff;
+	}
+
+QToolTip {
+	border: none;
+	background-color: #3c3f41;
+	color: #ffffff;
+	font-size: 12px;
+	}
+
+QAbstractItemView  {
+	outline: none;
+	}
+
+
+/*_____________ Item Labels ____________*/
+
+QLabel[objectName~="label_path"] {
+	background: #ffffff;
+	color: #808080;
+	}
+
+QLabel[objectName~="label_size"] {
+	background: #ffffff;
+	color: #000000;
+	font-weight: bold;
+	}
+
+
+/*_____________ Scroll Bars ____________*/
+
+QScrollBar:vertical {
+	border: none;
+	background: white;
+	width: 35px;
+	margin: 14px 5px 20px 20px;
+	}
+
+QScrollBar::handle:vertical {
+	background: #e5e5e5;
+	min-height: 20px;
+	}
+
+QScrollBar::add-line:vertical {
+	border: none;
+	background: white;
+	height: 20px;
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+	}
+
+QScrollBar::sub-line:vertical {
+	border: 2px solid white;
+	background: white;
+	height: 20px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+	}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+	border: none;
+	width: 3px;
+	height: 3px;
+	background: white;
+	}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+	background: none;
+	}
+
+
+/*_____________ Progress Bar ____________*/
+
+QProgressBar::chunk {
+	background-color: #0099ff;
+	width: 20px;
+	}
+
+
+/*_____________ Line Edit ____________*/
+
+QLineEdit[objectName~="console_on"] {
+	background-color: #3c3f41;
+	color: #ffffff;
+	font-family: "Consolas";
+	font-size: 16px;
+	}
+
+QLineEdit[objectName~="console_off"] {
+	background-color: #dfdfdf;
+	color: #a0a0a0;
+	font-size: 12px;
+	}
+
+QToolTip[objectName~="console_on"] {
+	min-width: 520px;
+	padding: 20px;
+	border: none;
+	background-color: #3c3f41;
+	color: #aaaaaa;
+	font-family: "Consolas";
+	font-size: 12px;
+	}
+
+
+/*_____________ Buttons ____________*/
+
+QPushButton[objectName~='button_save_locally'] {
+	color: #aaaaaa;
+	}
+
+QPushButton::hover[objectName~="button_save_locally"] {
+	border: 1px solid #0099ff;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	color: #0099ff;
+	}
+
+QPushButton::pressed[objectName~="button_save_locally"] {
+	background-color: #0099ff;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	color: #ffffff;
+	}
+
+
+QPushButton[objectName~="button_save_directly"] {
+	color: #aaaaaa;
+	}
+
+QPushButton::hover[objectName~="button_save_directly"] {
+	border: 1px solid #0099ff;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color: #0099ff;
+	}
+
+QPushButton::pressed[objectName~="button_save_directly"] {
+	background-color: #0099ff;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color: #ffffff;
+	}
+
+
+QPushButton[objectName~="button_switch"] {
+	border: none;
+	}
+
+QPushButton::hover[objectName~="button_switch"] {
+	border: none;
+	}
+
+QPushButton::pressed[objectName~="button_switch"] {
+	border: none;
+	}
+
+QPushButton::checked[objectName~="button_switch"] {
+	border: none;
+	}
+
+
+QPushButton[objectName~="command_button"] {
+	border: none;
+	color: 0099ff;
+	}
+
+QPushButton::hover[objectName~="command_button"] {
+	border: none;
+	color: #0099ff;
+		}
+
+QPushButton::pressed[objectName~="command_button"] {
+	border: none;
+	color: #0099ff;
+	}
+
+
+QPushButton[objectName~="button_arg_on"] {
+	border: none;
+	font-weight: bold;
+	color: #aaaaaa;
+	}
+
+QPushButton::hover[objectName~="button_arg_on"] {
+	border: none;
+	font-weight: bold;
+	color: #0099ff;
+	}
+
+QPushButton::pressed[objectName~="button_arg_on"] {
+	border: none;
+	color: #0099ff;
+	}
+
+QPushButton::checked[objectName~="button_arg_on"] {
+	border: none;
+	font-weight: bold;
+	color: #0099ff;
+	}
+
+
+QPushButton[objectName~="button_arg_off"] {
+	border: none;
+	font-weight: bold;
+	color: #aaaaaa;
+	}
+
+QPushButton::checked[objectName~="button_arg_off"] {
+	border: none;
+	font-weight: bold;
+	color: #3c3f41;
+	}
+
+
+QPushButton[objectName~="txmake_loaded"] {
+	border: none;
+	color: #aaaaaa;
+	}
+
+QPushButton::hover[objectName~="txmake_loaded"] {
+	border: none;
+	color: #0099ff;
+	}
+
+QPushButton::pressed[objectName~="txmake_loaded"] {
+	background-color: #dfdfdf;
+	border-radius: 10px;
+	color: #0099ff;
+	}
+
+
+QPushButton[objectName~="txmake_loaded_not"] {
+	background-color: #fbae17;
+	border-radius: 10px;
+	color: #ffffff;
+	}
+
+QPushButton::hover[objectName~="txmake_loaded_not"] {
+	background-color: #0099ff;
+	border-radius: 10px;
+	color: #ffffff;
+	}
+
+QPushButton::pressed[objectName~="txmake_loaded_not"] {
+	background-color: #dfdfdf;
+	border-radius: 10px;
+	color: #ffffff;
+	}
+
+
+QPushButton[objectName~="start"] {
+	border: 1px solid #dfdfdf;
+	background-color: #ffffff;
+	border-radius: 6px;
+	color: #0099ff;
+	}
+
+QPushButton:!pressed[objectName~="start"][selected='True'] {
+	background-image: url(":/run_selected_on.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-origin: content;
+	padding: 5px;
+	}
+
+QPushButton::hover[objectName~="start"] {
+	border: none;
+	background-color: #0099ff;
+	border-radius: 6px;
+	color: #ffffff;
+	}
+
+QPushButton::pressed[objectName~="start"] {
+	border: none;
+	background-color: #dfdfdf;
+	border-radius: 6px;
+	color: #ffffff;
+	}
+
+QPushButton:disabled[objectName~="start"] {
+	border: none;
+	background-color: #aaaaaa;
+	border-radius: 6px;
+	color: #ffffff;
+	}
+
+
+/*_____________ Background Stripes ____________*/
+
+QWidget > QWidget > QWidget > QWidget {
+	background: #e5e5e5;
+}
