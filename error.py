@@ -1,9 +1,11 @@
-from PySide.QtGui import *
-from widgets import error_UI
-from icons import resource_rcc
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+
+from widgets import errorUI
+from icons import resource
 
 
-class Error(QDialog, error_UI.Ui_Error):
+class Error(QDialog, errorUI.Ui_Error):
 	def __init__(self):
 		super(Error, self).__init__()
 		self.setupUi(self)

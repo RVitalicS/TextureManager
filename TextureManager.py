@@ -1,4 +1,7 @@
-from PySide.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+
 import interface, settings, builders
 import os
 
@@ -183,7 +186,7 @@ class TexConverter(interface.Interface):
 
 	def convert(self):
 		self.label_size.clear()
-		selection = [item.data(32) for item in self.item_list.selectedItems()]
+		selection = [item.data(Qt.UserRole) for item in self.item_list.selectedItems()]
 		if builders.convert(self.progress_bar, self.label_path, selection):
 			self.ui_update()
 			self.items_update()

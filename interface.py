@@ -1,14 +1,16 @@
-from PySide.QtCore import *
-from PySide.QtGui import *
-from widgets import toTex_UI, list_items
-from icons import resource_rcc
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+
+from widgets import mainUI, listUI
+from icons import resource
 import builders, settings
 import os
 
 style = os.path.join(os.path.dirname(__file__), 'style.css')
 
 
-class Interface(QMainWindow, toTex_UI.Ui_toTex):
+class Interface(QMainWindow, mainUI.Ui_TextureManager):
 	def __init__(self):
 		super(Interface, self).__init__()
 		self.setupUi(self)
@@ -62,7 +64,7 @@ class Interface(QMainWindow, toTex_UI.Ui_toTex):
 		self.setWindowIcon(QIcon(':/icon_16x16.png'))
 		self.button_switch.setIconSize(QSize(32, 20))
 
-		self.item_list = list_items.ItemList()
+		self.item_list = listUI.ItemList()
 		self.item_list.setViewportMargins(25, 15, 5, 18)
 		self.item_list.setFrameShape(QFrame.NoFrame)
 
@@ -167,14 +169,14 @@ class Interface(QMainWindow, toTex_UI.Ui_toTex):
 	def focus_label(self, item):
 		if item:
 			if self.item_list.hasFocus():
-				if os.path.exists(item.data(32)):
-					self.label_path.setText(item.data(32))
-					self.focused_data = item.data(32)
+				if os.path.exists(item.data(Qt.UserRole)):
+					self.label_path.setText(item.data(Qt.UserRole))
+					self.focused_data = item.data(Qt.UserRole)
 				self.items_update()
 
 	def items_update(self):
 		selected_items = self.item_list.selectedItems()
-		selected_data = [i.data(32) for i in selected_items]
+		selected_data = [i.data(Qt.UserRole) for i in selected_items]
 
 		item_in = 0
 		if settings.Settings().load()['items']:
@@ -183,14 +185,14 @@ class Interface(QMainWindow, toTex_UI.Ui_toTex):
 		for row in range(self.item_list.count()):
 			item = self.item_list.item(row)
 
-			if not os.path.exists(item.data(32)):
+			if not os.path.exists(item.data(Qt.UserRole)):
 				with settings.SettingsManager() as data:
-					if item.data(32) in data['items']:
-						data['items'].remove(item.data(32))
+					if item.data(Qt.UserRole) in data['items']:
+						data['items'].remove(item.data(Qt.UserRole))
 				self.focused_data = None
 
-			elif os.path.splitext(item.data(32))[-1]:
-				if self.newer_switch and builders.older_tex(item.data(32)):
+			elif os.path.splitext(item.data(Qt.UserRole))[-1]:
+				if self.newer_switch and builders.older_tex(item.data(Qt.UserRole)):
 					item.setIcon(QIcon(':/image_has_tex.png'))
 					item.setData(Qt.ForegroundRole, QColor('#aaaaaa'))
 				else:
@@ -198,7 +200,7 @@ class Interface(QMainWindow, toTex_UI.Ui_toTex):
 					item.setData(Qt.ForegroundRole, QColor('#3c3f41'))
 
 			else:
-				if self.newer_switch and builders.older_tex(item.data(32)):
+				if self.newer_switch and builders.older_tex(item.data(Qt.UserRole)):
 					item.setIcon(QIcon(':/folder_has_tex.png'))
 					item.setData(Qt.ForegroundRole, QColor('#aaaaaa'))
 				else:
@@ -210,7 +212,7 @@ class Interface(QMainWindow, toTex_UI.Ui_toTex):
 			item_out = len(settings.Settings().load()['items'])
 
 		for item in selected_items:
-			if os.path.splitext(item.data(32))[-1]:
+			if os.path.splitext(item.data(Qt.UserRole))[-1]:
 				item.setIcon(QIcon(':/image_selected.png'))
 			else:
 				item.setIcon(QIcon(':/folder_selected.png'))

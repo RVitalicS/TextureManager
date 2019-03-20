@@ -1,11 +1,13 @@
-from PySide.QtCore import *
-from PySide.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+
 import os, webbrowser
 import settings, builders
 
 
 class ItemList(QListWidget):
-	list_updated = Signal()
+	list_updated = pyqtSignal()
 
 	def __init__(self):
 		super(ItemList, self).__init__()
@@ -83,7 +85,7 @@ class ItemList(QListWidget):
 	def delete_selected(self):
 		with settings.SettingsManager() as data:
 			for item in self.selectedItems():
-				data['items'].remove(item.data(32))
+				data['items'].remove(item.data(Qt.UserRole))
 				self.takeItem(self.indexFromItem(item).row())
 				if not data['items']:
 					data['items'] = None
@@ -91,7 +93,7 @@ class ItemList(QListWidget):
 
 	def open_item(self, item):
 		if self.key_ctrl:
-			tex_file = builders.older_tex(item.data(32))
+			tex_file = builders.older_tex(item.data(Qt.UserRole))
 			if isinstance(tex_file, str):
 				if os.path.splitext(tex_file)[-1]:
 					command = r'it "%s"' % tex_file
@@ -100,5 +102,5 @@ class ItemList(QListWidget):
 					self.key_ctrl = False
 					os.popen(command)
 		else:
-			path = item.data(32)
+			path = item.data(Qt.UserRole)
 			webbrowser.open(path)
