@@ -685,7 +685,7 @@ class Ui_TextureManager(object):
         self.button_half.setText(_translate("TextureManager", "half"))
         self.button_float.setText(_translate("TextureManager", "float"))
         self.button_save_locally.setText(_translate("TextureManager", "Save All Locally"))
-        self.button_save_directly.setText(_translate("TextureManager", "Save to Derictory"))
+        self.button_save_directly.setText(_translate("TextureManager", "Save to Directory"))
         self.line_arguments.setText(_translate("TextureManager", "Use it as command line. Write keys only. It overrides all settings."))
         self.progress_bar.setFormat(_translate("TextureManager", "%p%"))
         self.button_add.setText(_translate("TextureManager", "Add"))
